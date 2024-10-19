@@ -128,6 +128,20 @@
         <!---------------------------------------------END------------------------------------------------->
     </div>
 
+    <!-- Add this script to show the popup when the page loads -->
+    <script id="popup_script_930559">
+        window.onload = function() {
+            // Show the popup after 1 second
+            setTimeout(function() {
+                document.getElementById('popup_css_930559').classList.add('show');
+            }, 1000);
+        };
+
+        function closePopup930559() {
+            document.getElementById('popup_css_930559').classList.remove('show');
+        }
+    </script>
+
         <script type="text/javascript">
     // Set the title initially
     document.title = "Welcome to RDP";

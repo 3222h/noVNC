@@ -1010,10 +1010,11 @@ const UI = {
         const port = UI.getSetting('port');
         const path = UI.getSetting('path');
 
-        if (typeof password === 'undefined') {
-            password = WebUtil.getConfigVar('password');
-            UI.reconnectPassword = password;
-        }
+       if (typeof password === 'undefined') {
+    // password = WebUtil.getConfigVar('password');
+    // UI.reconnectPassword = password;
+}
+
 
         if (password === null) {
             password = undefined;
@@ -1041,10 +1042,10 @@ const UI = {
         }
         url += '/' + path;
 
-        UI.rfb = new RFB(document.getElementById('noVNC_container'), url,
-                         { shared: UI.getSetting('shared'),
-                           repeaterID: UI.getSetting('repeaterID'),
-                           credentials: { password: password } });
+        UI.rfb = new RFB(document.getElementById('noVNC_container'), url, {
+    shared: UI.getSetting('shared'),
+    repeaterID: UI.getSetting('repeaterID')
+});
         UI.rfb.addEventListener("connect", UI.connectFinished);
         UI.rfb.addEventListener("disconnect", UI.disconnectFinished);
         UI.rfb.addEventListener("serververification", UI.serverVerify);

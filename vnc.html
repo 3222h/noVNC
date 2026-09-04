@@ -50,22 +50,6 @@
 
 <body>
 
-
-    <audio id="vnc-audio" autoplay controls>
-  <source src="http://localhost:8080" type="audio/mpeg">
-  Your browser does not support the audio element.
-    </audio>
-    
-    <script>
-document.addEventListener("DOMContentLoaded", function() {
-  var audio = document.getElementById("vnc-audio");
-  audio.muted = false;
-  audio.play().catch(function(err) {
-    console.log("Autoplay blocked, user must click play:", err);
-  });
-});
-    </script>
-
     <div id="noVNC_fallback_error" class="noVNC_center">
         <div>
             <div>noVNC encountered an error:</div>

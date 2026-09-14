@@ -13,7 +13,7 @@
     or the fragment:
         http://example.com/#host=HOST&port=PORT&encrypt=1
     -->
-    <title>cloudprordp</title>
+    <title>noVNC</title>
 
     <link rel="icon" type="image/x-icon" href="app/images/icons/novnc.ico">
 
@@ -50,24 +50,9 @@
 
 <body>
 
-       <audio id="vnc-audio" autoplay controls>
-  <source src="http://localhost:8080" type="audio/mpeg">
-  Your browser does not support the audio element.
-    </audio>
-    
-    <script>
-document.addEventListener("DOMContentLoaded", function() {
-  var audio = document.getElementById("vnc-audio");
-  audio.muted = false;
-  audio.play().catch(function(err) {
-    console.log("Autoplay blocked, user must click play:", err);
-  });
-});
-    </script>
-
     <div id="noVNC_fallback_error" class="noVNC_center">
         <div>
-            <div>cloudprordp encountered an error:</div>
+            <div>noVNC encountered an error:</div>
             <br>
             <div id="noVNC_fallback_errormsg"></div>
         </div>
@@ -81,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             <div class="noVNC_scroll">
 
-            <h1 class="noVNC_logo" translate="no">cloudprordp</h1>
+            <h1 class="noVNC_logo" translate="no"><span>no</span><br>VNC</h1>
 
             <hr>
 
@@ -184,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <select id="noVNC_setting_resize" name="vncResize">
                             <option value="off">None</option>
                             <option value="scale">Local Scaling</option>
-                            <option value="remote" selected>Remote Resizing</option>
+                            <option value="remote">Remote Resizing</option>
                         </select>
                     </li>
                     <li><hr></li>
@@ -276,10 +261,10 @@ document.addEventListener("DOMContentLoaded", function() {
     <!-- Connect button -->
     <div class="noVNC_center">
         <div id="noVNC_connect_dlg">
-            <p class="noVNC_logo" translate="no">cloudprordp</p>
+            <p class="noVNC_logo" translate="no"><span>no</span>VNC</p>
             <div>
                 <button id="noVNC_connect_button">
-                    <img alt="" src="app/images/connect.svg"> Connect to cloudprordp
+                    <img alt="" src="app/images/connect.svg"> Connect
                 </button>
             </div>
         </div>
@@ -289,7 +274,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="noVNC_center noVNC_connect_layer">
     <div id="noVNC_verify_server_dlg" class="noVNC_panel"><form>
         <div class="noVNC_heading">
-            cloudprordp Server Identity
+            Server identity
         </div>
         <div>
             The server has provided the following identifying information:
@@ -313,7 +298,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="noVNC_center noVNC_connect_layer">
     <div id="noVNC_credentials_dlg" class="noVNC_panel"><form>
         <div class="noVNC_heading">
-            cloudprordp Credentials
+            Credentials
         </div>
         <div id="noVNC_username_block">
             <label for="noVNC_username_input">Username:</label>

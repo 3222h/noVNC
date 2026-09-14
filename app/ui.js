@@ -18,7 +18,7 @@ import Keyboard from "../core/input/keyboard.js";
 import RFB from "../core/rfb.js";
 import * as WebUtil from "./webutil.js";
 
-const PAGE_TITLE = "cloudprordp";
+const PAGE_TITLE = "noVNC";
 
 const UI = {
 
@@ -174,7 +174,7 @@ const UI = {
         UI.initSetting('port', port);
         UI.initSetting('encrypt', (window.location.protocol === "https:"));
         UI.initSetting('view_clip', false);
-        UI.initSetting('resize', 'remote');
+        UI.initSetting('resize', 'scale');
         UI.initSetting('quality', 0);
         UI.initSetting('compression', 9);
         UI.initSetting('shared', true);
@@ -407,7 +407,7 @@ const UI = {
             case 'init':
                 break;
             case 'connecting':
-                transitionElem.textContent = _("Connecting to cloudprordp...");
+                transitionElem.textContent = _("Connecting...");
                 document.documentElement.classList.add("noVNC_connecting");
                 break;
             case 'connected':
@@ -420,7 +420,7 @@ const UI = {
             case 'disconnected':
                 break;
             case 'reconnecting':
-                transitionElem.textContent = _("Reconnecting to cloudprordp...");
+                transitionElem.textContent = _("Reconnecting...");
                 document.documentElement.classList.add("noVNC_reconnecting");
                 break;
             default:
@@ -1010,10 +1010,11 @@ const UI = {
         const port = UI.getSetting('port');
         const path = UI.getSetting('path');
 
-        if (typeof password === 'undefined') {
-            password = WebUtil.getConfigVar('password');
-            UI.reconnectPassword = password;
-        }
+       if (typeof password === 'undefined') {
+    // password = WebUtil.getConfigVar('password');
+    // UI.reconnectPassword = password;
+}
+
 
         if (password === null) {
             password = undefined;
@@ -1041,10 +1042,10 @@ const UI = {
         }
         url += '/' + path;
 
-        UI.rfb = new RFB(document.getElementById('noVNC_container'), url,
-                         { shared: UI.getSetting('shared'),
-                           repeaterID: UI.getSetting('repeaterID'),
-                           credentials: { password: password } });
+        UI.rfb = new RFB(document.getElementById('noVNC_container'), url, {
+    shared: UI.getSetting('shared'),
+    repeaterID: UI.getSetting('repeaterID')
+});
         UI.rfb.addEventListener("connect", UI.connectFinished);
         UI.rfb.addEventListener("disconnect", UI.disconnectFinished);
         UI.rfb.addEventListener("serververification", UI.serverVerify);
@@ -1107,9 +1108,9 @@ const UI = {
 
         let msg;
         if (UI.getSetting('encrypt')) {
-            msg = _("Connected to cloudprordp (encrypted): ") + UI.desktopName;
+            msg = _("Connected (encrypted) to ") + UI.desktopName;
         } else {
-            msg = _("Connected to cloudprordp (unencrypted): ") + UI.desktopName;
+            msg = _("Connected (unencrypted) to ") + UI.desktopName;
         }
         UI.showStatus(msg);
         UI.updateVisualState('connected');
